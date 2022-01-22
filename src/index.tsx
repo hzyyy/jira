@@ -2,11 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import {ProjectListScreen} from './screens/project-list/index'
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ProjectListScreen />
   </React.StrictMode>,
   document.getElementById("root")
 );
