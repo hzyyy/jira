@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react"
 
+interface TYPE {
+  [key: string]: any
+}
+
 // 对传入的Object 进行数据处理
-export const cleanObject = (obj) => {
+export const cleanObject = (obj: TYPE) => {
   const result = { ...obj }
 
   Object.keys(result).forEach( key => {
@@ -16,7 +20,7 @@ export const cleanObject = (obj) => {
 }
 
 // 封装hook，方法内的代码只执行一次
-export const useMount = (callback) => {
+export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback()
   }, []);
@@ -24,7 +28,7 @@ export const useMount = (callback) => {
 
 // 封装hook，防抖
 // 不直接修改传入的value，而是通过useState 去修改
-export const useDebounce = (value, delay) => {
+export const useDebounce = (value: any, delay?: number) => {
   const [ debounceValue, setDebounceValue ] = useState(value)
   
   // 监听value 值的变化

@@ -1,6 +1,24 @@
-import { useState, useEffect } from 'react'
+export interface Users {
+  id: string; 
+  name: string;
+  personId: string;
+}
 
-export const SearchPanel = ({ users, param, setParam }) => {
+export interface Project {
+  id: string;
+  name: string;
+  personId: string;
+  // organization: string;
+  // created: number;
+}
+
+interface SearchPanelProps {
+  users: Users[],
+  param: { name: string, personId: string },
+  setParam: (param: SearchPanelProps['param']) => void
+}
+
+export const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
   return <form>
     <div>
       <input type="text" value={param.name} onChange={ event => setParam({

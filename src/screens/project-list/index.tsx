@@ -16,7 +16,7 @@ export const ProjectListScreen = () => {
   // 给param 添加debounce 防抖
   const debounceParam = useDebounce(param, 1000)
 
-  // 负责人
+  // 负责人列表
   const [ users, setUsers ] = useState([])
 
   // 项目列表
