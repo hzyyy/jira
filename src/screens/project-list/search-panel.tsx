@@ -1,19 +1,18 @@
-export interface Users {
+export interface User {
   id: string; 
   name: string;
   personId: string;
+  token: string;
 }
 
 export interface Project {
   id: string;
   name: string;
   personId: string;
-  // organization: string;
-  // created: number;
 }
 
 interface SearchPanelProps {
-  users: Users[],
+  users: User[],
   param: { name: string, personId: string },
   setParam: (param: SearchPanelProps['param']) => void
 }

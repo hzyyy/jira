@@ -1,8 +1,8 @@
-import { Users, Project } from 'screens/project-list/search-panel';
+import { User, Project } from 'screens/project-list/search-panel';
 
 interface ListProps {
   list: Project[],
-  users: Users[],
+  users: User[],
 }
 
 export const List = ({ list, users }: ListProps) => {

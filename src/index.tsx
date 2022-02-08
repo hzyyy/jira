@@ -2,15 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import {ProjectListScreen} from './screens/project-list/index'
 import reportWebVitals from "./reportWebVitals";
+import { DevTools, loadServer } from "jira-dev-tool";
+import { AppProviders } from "context";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <ProjectListScreen />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+loadServer(() => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <AppProviders>
+        <App />
+        <DevTools />
+      </AppProviders>
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+})
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

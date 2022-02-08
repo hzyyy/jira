@@ -26,9 +26,12 @@ export const useMount = (callback: () => void) => {
   }, []);
 }
 
+
+
 // 封装hook，防抖
 // 不直接修改传入的value，而是通过useState 去修改
-export const useDebounce = (value: any, delay?: number) => {
+// 给方法和传参数，设定泛型 "V"；通过类型推断出这个方法的泛型；相当于 interface V { name: string, personId: string }
+export const useDebounce = <V>(value: V, delay?: number): any => {
   const [ debounceValue, setDebounceValue ] = useState(value)
   
   // 监听value 值的变化
@@ -42,4 +45,20 @@ export const useDebounce = (value: any, delay?: number) => {
 
   // 最终返回修改后的state 值
   return debounceValue
+}
+
+export const useArray = <T>( initArray: T[] ) => {
+  const [ value, setValue ] = useState(initArray)
+  
+  return {
+    value: value,
+    add: (addValue: T) => setValue([ ...value, addValue ]),
+    removeIndex: (index: number) => {
+      let new_arr = [ ...value ]
+
+      new_arr.splice(index, 1)
+      setValue([...new_arr])
+    },
+    clear: () => setValue([]),
+  }
 }
